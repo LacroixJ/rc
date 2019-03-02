@@ -11,7 +11,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 
-Plugin 'lervag/vimtex'
+" Plugin 'lervag/vimtex'
 Plugin 'sjl/badwolf'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'w0rp/ale'
@@ -32,7 +32,7 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 "
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
-set mouse=a
+"set mouse=a
 set t_Co=256
 set colorcolumn=81
 colorscheme badwolf
@@ -45,11 +45,22 @@ command WQ wq
 highlight ColorColumn ctermfg=Red
 
 "highlight OverLength ctermbg=White ctermfg=Black
-"match OverLength /\%81v.\+/
 
+if &term =~ '^screen'
+    " tmux will send xterm-style keys when its xterm-keys option is on
+    execute "set <xUp>=\e[1;*A"
+    execute "set <xDown>=\e[1;*B"
+    execute "set <xRight>=\e[1;*C"
+    execute "set <xLeft>=\e[1;*D"
+endif
+"match OverLength /\%81v.\+/
+set incsearch
+set hlsearch
+"search highlighting
 let g:ycm_autoclose_preview_window_after_insertion = 1
 
 let g:airline#extensions#ale#enabled = 1
+let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/.ycm_extra_conf.py"
 
 let g:ale_fixers = {'*': ['remove_trailing_lines','trim_whitespace']}
 let g:ale_python_pylint_options = '--max-line-length=240'
