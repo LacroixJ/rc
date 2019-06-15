@@ -11,11 +11,12 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 
-" Plugin 'lervag/vimtex'
+Plugin 'lervag/vimtex'
 Plugin 'sjl/badwolf'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'w0rp/ale'
 Plugin 'vim-airline/vim-airline'
+Plugin 'terryma/vim-multiple-cursors'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -34,8 +35,9 @@ filetype plugin indent on    " required
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 "set mouse=a
 set t_Co=256
-set colorcolumn=81
+"set colorcolumn=94
 colorscheme badwolf
+syntax on
 set clipboard=unnamedplus
 command W w
 command Q q
@@ -66,6 +68,21 @@ let g:ale_fixers = {'*': ['remove_trailing_lines','trim_whitespace']}
 let g:ale_python_pylint_options = '--max-line-length=240'
 let g:ale_python_pylint_executable = 'python3'
 let g:ale_fix_on_save = 1
-let g:ale_python_flake8_options = '--max-line-length=240'
-highlight SignColumn ctermbg=234
-highlight ALEError ctermbg = 239 cterm = none
+"let g:ale_python_flake8_executable = python3
+let g:ale_python_flake8_options = '--ignore=E303,E301,E302,E261,E262,E501,E305,W503'
+highlight SignColumn ctermbg=NONE
+highlight ALEError ctermbg=NONE cterm=none
+"239
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=2
+let g:tex_conceal='abdmg'
+
+if empty(v:servername) && exists('*remote_startserver')
+  call remote_startserver('VIM')
+end
+
+
+hi! Normal ctermbg=NONE guibg=NONE
+hi! NonText ctermbg=NONE guibg=NONE
