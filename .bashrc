@@ -2,6 +2,7 @@
 # ~/.bashrc
 #
 alias open='xdg-open > /dev/null 2>&1' #redirects std err to std out
+alias quote='fortune | cowsay'
 
 [[ $- != *i* ]] && return
 

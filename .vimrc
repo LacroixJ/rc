@@ -69,13 +69,14 @@ let g:ale_python_pylint_options = '--max-line-length=240'
 let g:ale_python_pylint_executable = 'python3'
 let g:ale_fix_on_save = 1
 "let g:ale_python_flake8_executable = python3
-let g:ale_python_flake8_options = '--ignore=E303,E301,E302,E261,E262,E501,E305,W503'
+let g:ale_python_flake8_options = '--ignore=E123,E126,E128,E303,E301,E302,E261,E262,E265,E402,E501,E305,W503,W291,W293'
 highlight SignColumn ctermbg=NONE
 highlight ALEError ctermbg=NONE cterm=none
 "239
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
+set tw=95
 set conceallevel=2
 let g:tex_conceal='abdmg'
 
