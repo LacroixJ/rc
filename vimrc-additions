@@ -1,0 +1,51 @@
+"Force 256 colours
+set t_Co=256
+
+"Colourscheme for syntax highlighting
+colorscheme badwolf
+
+"smart tabbing
+set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+set autoindent smartindent breakindent
+
+"Yaml files need different tabbing.
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType typescript setlocal ts=2 sts=2 sw=2 expandtab
+
+"Enable spellcheck and text wrapping for markdown files
+autocmd FileType markdown setlocal tw=80 spell
+
+"Don't use mouse
+set mouse=
+
+"Enable syntax highlighting
+syntax on
+
+"Allow vim to use system clipboard
+set clipboard=unnamedplus
+
+"Automatically fix command typos when trying to exit or save files
+command W w
+command Q q
+command Wq wq
+command WQ wq
+
+"Highlight any text that goes over line length
+highlight ColorColumn ctermfg=Red
+highlight ColorColumn ctermbg=None
+highlight OverLength ctermbg=None ctermfg=Red
+"Set the color column at 94
+set cc=94
+
+"search highlighting
+set incsearch
+set hlsearch
+
+"Allow clear terminals in vim
+set conceallevel=2
+hi! Normal ctermbg=NONE guibg=NONE
+"Clear text after EOF
+hi NonText ctermbg=NONE
+"Add clear backround to linter errors
+highlight SignColumn ctermbg=NONE
+highlight ALEError ctermbg=NONE cterm=none
