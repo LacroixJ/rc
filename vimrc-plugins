@@ -1,3 +1,4 @@
+"~/.config/vimrc-additions
 set nocompatible
 
 call plug#begin()

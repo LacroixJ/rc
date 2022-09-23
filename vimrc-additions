@@ -1,3 +1,5 @@
+"~/.config/vimrc-additions
+
 "Force 256 colours
 set t_Co=256
 
@@ -15,13 +17,21 @@ autocmd FileType typescript setlocal ts=2 sts=2 sw=2 expandtab
 "Enable spellcheck and text wrapping for markdown files
 autocmd FileType markdown setlocal tw=80 spell
 
-"Don't use mouse
-set mouse=
+""Don't allow use of arrow keys in normal mode(bad habit stopper)
+""On review, fingers are typically already on arrow keys when moving around
+""Terminals. Makes no sense to have to move off of them within vim.
+"noremap <Up> <Nop>
+"noremap <Down> <Nop>
+"noremap <Left> <Nop>
+"noremap <Right> <Nop>
 
 "Enable syntax highlighting
 syntax on
 
-"Allow vim to use system clipboard
+"Enable mouse for normal mode only to allow scrolling in tmux
+set mouse=n
+
+"Allow vim to use system clipboard (requires certain compile options)
 set clipboard=unnamedplus
 
 "Automatically fix command typos when trying to exit or save files

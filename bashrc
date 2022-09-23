@@ -1,7 +1,15 @@
 #
 # ~/.bashrc
 #
-alias open='xdg-open > /dev/null 2>&1' #redirects std err to std out and discards both
+my_ip() {
+    nslookup `hostname` | grep Address | tail -1 | awk '{print $2}'
+}
+
+export MY_IP=`my_ip`
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
 
 [[ $- != *i* ]] && return
 
@@ -100,6 +108,7 @@ alias more=less
 xhost +local:root > /dev/null 2>&1
 
 complete -cf sudo
+
 
 # Bash won't get SIGWINCH if another process is in the foreground.
 # Enable checkwinsize so that bash will check the terminal size when
