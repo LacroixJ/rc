@@ -1,8 +1,9 @@
 #!/bin/bash
 
-cp ./vimrc ~/.vimrc
-cp ./vimrc-plugins ~/.config/vimrc-plugins
-cp ./vimrc-additions ~/.config/vimrc-additions
+cp -i ./vimrc ~/.vimrc
+cp -i ./vimrc-plugins ~/.config/vimrc-plugins
+cp -i ./vimrc-additions ~/.config/vimrc-additions
 
-cp ./bashrc ~/.bashrc
-cp ./tmux.conf ~/.tmux.conf
+cp -i ./bashrc ~/.bashrc
+cp -i ./bash_aliases ~/.bash_aliases
+cp -i ./tmux.conf ~/.tmux.conf
