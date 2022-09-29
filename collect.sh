@@ -6,4 +6,6 @@ cp -i ~/.config/vimrc-additions ./vimrc-additions
 
 cp -i ~/.bashrc ./bashrc
 cp -i ~/.bash_aliases ./bash_aliases
+cp -i ~/.bash_profile ./bash_profile
+
 cp -i ~/.tmux.conf ./tmux.conf
