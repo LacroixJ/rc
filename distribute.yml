@@ -1,0 +1,49 @@
+---
+- name: Distribute config files and configure vim
+  hosts: all
+  vars:
+    config_files:
+      - { src: bash_profile, dest: "{{ ansible_env.HOME }}/.bash_profile" }
+      - { src: bashrc, dest: "{{ ansible_env.HOME }}/.bashrc" }
+      - { src: bash_aliases, dest: "{{ ansible_env.HOME }}/.bash_aliases" }
+      - { src: tmux.conf, dest: "{{ ansible_env.HOME }}/.tmux.conf" }
+      - { src: vimrc, dest: "{{ ansible_env.HOME }}/.vimrc" }
+      - { src: vimrc-plugins, dest: "{{ ansible_env.HOME }}/.config/vimrc-plugins" }
+      - { src: vimrc-additions, dest: "{{ ansible_env.HOME }}/.config/vimrc-additions" }
+
+  tasks:
+  - name: Ensure conf dir exists
+    file:
+      path: "{{ ansible_env.HOME }}/.config"
+      state: directory
+
+  - name: Distribute config files
+    copy:
+      src: "{{ item.src }}"
+      dest: "{{ item.dest }}"
+      backup: true
+    with_items: "{{ config_files }}"
+
+  - name: Create vim autoload directory
+    file:
+      path: "{{ ansible_env.HOME }}/.vim/autoload/"
+      state: directory
+
+  - name: Download vim-plug
+    get_url:
+      url: "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+      dest: "{{ ansible_env.HOME }}/.vim/autoload/plug.vim"
+
+  - name: Install vim plugins
+    shell:
+      cmd: "vim +'PlugInstall --sync' +qa"
+    args:
+      stdin: "\n" #Ignore any vim errors due to missing plugins
+    register: install_output
+    changed_when: "'100%' in install_output.stdout" #If we downloaded a plugin
+
+  - name: Clean removed plugins
+    shell:
+      cmd: "vim +'PlugClean!' +qa"
+    register: clean_output
+    changed_when: "'.vim' in clean_output.stdout"

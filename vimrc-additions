@@ -3,8 +3,6 @@
 "Force 256 colours
 set t_Co=256
 
-"Colourscheme for syntax highlighting
-colorscheme badwolf
 
 "smart tabbing
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
