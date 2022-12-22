@@ -9,7 +9,7 @@ set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 set autoindent smartindent breakindent
 
 "Yaml files need different tabbing.
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab indentkeys-=<:> indentkeys-=0#
 autocmd FileType typescript setlocal ts=2 sts=2 sw=2 expandtab
 
 "Enable spellcheck and text wrapping for markdown files
