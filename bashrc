@@ -1,6 +1,6 @@
 #
 # ~/.bashrc
-#
+# vim: filetype=sh
 
 #Load aliases if they exist
 [ -r ~/.bash_aliases ] && . ~/.bash_aliases
@@ -10,13 +10,6 @@
 
 #Source bash completion files if they exist
 [ -r /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
-
-#Load colours for various commands to use
-if [[ -f ~/.dir_colors ]] ; then
-    eval $(dircolors -b ~/.dir_colors)
-elif [[ -f /etc/DIR_COLORS ]] ; then
-    eval $(dircolors -b /etc/DIR_COLORS)
-fi
 
 if [[ ${EUID} == 0 ]] ; then #Root prompt
     PS1='\[\033[01;31m\][\h\[\033[01;36m\] \W\[\033[01;31m\]]\$\[\033[00m\] '
