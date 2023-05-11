@@ -8,20 +8,13 @@ set t_Co=256
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 set autoindent smartindent breakindent
 
-"Yaml files need different tabbing.
+"Yaml files need shorter tabs and modified autoindentation.
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab indentkeys-=<:> indentkeys-=0#
-autocmd FileType typescript setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType yml setlocal ts=2 sts=2 sw=2 expandtab indentkeys-=<:> indentkeys-=0#
 
-"Enable spellcheck and text wrapping for markdown files
+"Enable spellcheck and text wrapping for markdown and plaintext files
 autocmd FileType markdown setlocal tw=80 spell
-
-""Don't allow use of arrow keys in normal mode(bad habit stopper)
-""On review, fingers are typically already on arrow keys when moving around
-""Terminals. Makes no sense to have to move off of them within vim.
-"noremap <Up> <Nop>
-"noremap <Down> <Nop>
-"noremap <Left> <Nop>
-"noremap <Right> <Nop>
+autocmd FileType txt setlocal tw=80 spell
 
 "Enable syntax highlighting
 syntax on
@@ -32,13 +25,13 @@ set mouse=n
 "Allow vim to use system clipboard (requires certain compile options)
 set clipboard=unnamedplus
 
-"Automatically fix command typos when trying to exit or save files
+"Automatically fix some command typos when trying to exit or save files
 command W w
 command Q q
 command Wq wq
 command WQ wq
 
-"Highlight any text that goes over line length
+"Highlight any text that goes over line length (subtly)
 highlight ColorColumn ctermfg=Red
 highlight ColorColumn ctermbg=None
 highlight OverLength ctermbg=None ctermfg=Red
@@ -54,6 +47,3 @@ set conceallevel=2
 hi! Normal ctermbg=NONE guibg=NONE
 "Clear text after EOF
 hi NonText ctermbg=NONE
-"Add clear backround to linter errors
-highlight SignColumn ctermbg=NONE
-highlight ALEError ctermbg=NONE cterm=none
