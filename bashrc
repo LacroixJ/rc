@@ -26,3 +26,20 @@ shopt -s checkwinsize
 
 # Enable history appending instead of overwriting.  #139609
 shopt -s histappend
+
+#Automatically enable virtual environments when in project root.
+#Disable them otherwise.
+function cd() {
+    builtin cd "$@"
+
+    #Python venv sets $VIRTUAL_ENV
+    if [ -z "$VIRTUAL_ENV" ]; then
+        if [ -d ./.venv ]; then
+            source ./.venv/bin/activate
+        fi
+    else
+        if [ ! -d ./.venv ]; then
+            deactivate
+        fi
+    fi
+}
