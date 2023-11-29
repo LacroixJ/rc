@@ -39,7 +39,11 @@ function cd() {
         fi
     else
         if [ ! -d ./.venv ]; then
-            deactivate
+            if [ $(type -t deactivate) == function ]; then
+                deactivate
+            else
+                unset VIRTUAL_ENV
+            fi
         fi
     fi
 }
