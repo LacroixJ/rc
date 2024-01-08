@@ -22,9 +22,13 @@ Plug 'dense-analysis/ale'
 Plug 'sjl/badwolf'
 Plug 'vim-airline/vim-airline'
 Plug 'airblade/vim-gitgutter'
+Plug 'preservim/nerdcommenter'
 
 " Initialize plugin system
 call plug#end()
+
+"nerdcommenter relies on this being on
+filetype plugin on
 
 "Colourscheme for syntax highlighting
 colorscheme badwolf
